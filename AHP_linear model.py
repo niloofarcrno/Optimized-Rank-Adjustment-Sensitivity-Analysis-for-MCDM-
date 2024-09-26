@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+ #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Sat Jul  6 12:17:36 2024
@@ -61,21 +61,21 @@ model.balance6 = pyo.Constraint(n_set, rule=lambda model, i: sum(model.d_plus[j,
 # Add constraints to ensure the first component is greater than the others
 model.rank_constraints = pyo.ConstraintList()
 for i in n_set:
-    if i != 0:
-        model.rank_constraints.add(model.results[0] >= model.results[i])
+    if i != 2:
+        model.rank_constraints.add(model.results[2] >= model.results[i])
 
 model.balance8 = pyo.Constraint(rule=lambda model: (
-    sum(data_matrix[0, j] * weight_expr(model, 0, j) for j in m_set) >=
-    sum(data_matrix[1, j] * weight_expr(model, 1, j) for j in m_set)
+    sum(data_matrix[2, j] * weight_expr(model, 0, j) for j in m_set) >=
+    sum(data_matrix[0, j] * weight_expr(model, 0, j) for j in m_set)
 ))
 
 model.balance9 = pyo.Constraint(rule=lambda model: (
-    sum(data_matrix[1, j] * weight_expr(model, 1, j) for j in m_set) >=
-    sum(data_matrix[2, j] * weight_expr(model, 2, j) for j in m_set)
+    sum(data_matrix[2, j] * weight_expr(model, 2, j) for j in m_set) >=
+    sum(data_matrix[1, j] * weight_expr(model, 1, j) for j in m_set)
 ))
 
 model.balance10 = pyo.Constraint(rule=lambda model: (
-    sum(data_matrix[1, j] * weight_expr(model, 1, j) for j in m_set) >=
+    sum(data_matrix[2, j] * weight_expr(model, 2, j) for j in m_set) >=
     sum(data_matrix[3, j] * weight_expr(model, 3, j) for j in m_set)
 ))
 
