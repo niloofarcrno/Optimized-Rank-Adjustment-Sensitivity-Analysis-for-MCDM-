@@ -68,17 +68,17 @@ for i in n_set:
 # Additional constraints to ensure the result from the first alternative is greater than others
 model.balance8 = pyo.Constraint(rule=lambda model: (
     sum(data_matrix[0, j] * weight_expr(model, 0, j) for j in m_set) >=
-    sum(data_matrix[1, j] * weight_expr(model, 1, j) for j in m_set)
+    sum(data_matrix[1, j] * weight_expr(model, 0, j) for j in m_set)
 ))
 
 model.balance9 = pyo.Constraint(rule=lambda model: (
     sum(data_matrix[0, j] * weight_expr(model, 0, j) for j in m_set) >=
-    sum(data_matrix[2, j] * weight_expr(model, 2, j) for j in m_set)
+    sum(data_matrix[2, j] * weight_expr(model, 0, j) for j in m_set)
 ))
 
 model.balance10 = pyo.Constraint(rule=lambda model: (
     sum(data_matrix[0, j] * weight_expr(model, 0, j) for j in m_set) >=
-    sum(data_matrix[3, j] * weight_expr(model, 3, j) for j in m_set)
+    sum(data_matrix[3, j] * weight_expr(model, 0, j) for j in m_set)
 ))
 
 # Solve the model using GLPK (open-source solver)
