@@ -8,3 +8,17 @@ Upon solving the model, the optimal decision variables—representing the change
 
 
 The tool developed for the ANP model is open access, leveraging the open-source solver IPOPT.
+
+Also, optimization models (NLPSensitivity_TOPSIS.py) is developed to determine the minimal weight adjustments required to make the second alternative rank first in the TOPSIS method.
+
+Implements a nonlinear optimization model using Pyomo and IPOPT.
+
+Ensures calculated TOPSIS scores (Ci) reflect dynamic weight changes.
+
+Objective: Minimize the sum of d_plus and d_minus (weight modifications).
+
+Constraints ensure valid weight normalization, upper/lower bounds, and that the second alternative ranks highest.
+
+Final adjusted weights are exported to weight2.csv (no headers).
+
+Validates output against static TOPSIS results.
